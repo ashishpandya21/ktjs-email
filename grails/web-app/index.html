@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="http://jsfiddle.net/css/result-light.css">    
+        <link rel="stylesheet" type="text/css" href="http://learn.knockoutjs.com/Content/App/coderunner.css"> 
+        <link rel="stylesheet" type="text/css" href="http://learn.knockoutjs.com/Content/TutorialSpecific/webmail.css">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <ul class="folders" data-bind="foreach: folders">
+           <li data-bind="text: $data, 
+               css: { selected: $data == $root.chosenFolderId() },
+               click: $root.goToFolder"></li>
+
+        </ul>
+        <table class="mails" data-bind="with: chosenFolderData">
+        <thead><tr><th>From</th><th>To</th><th>Subject</th><th>Date</th></tr></thead>
+        <tbody data-bind="foreach: mails" >
+            <tr data-bind="click: $root.goToMail" >
+                <td data-bind="text: sendingFrom"></td>
+                <td data-bind="text: sendingTo"></td>
+                <td data-bind="text: subject"></td>
+                <td data-bind="text: sentDate"></td>
+            </tr>     
+        </tbody>
+    </table>
+        <!-- Chosen mail -->
+    <div class="viewMail" data-bind="with: chosenMailData">
+        <div class="mailInfo">
+            <h1 data-bind="text: subject"></h1>
+            <p><label>From</label>: <span data-bind="text: sendingFrom"></span></p>
+            <p><label>To</label>: <span data-bind="text: sendingTo"></span></p>
+            <p><label>Date</label>: <span data-bind="text: sentDate"></span></p>
+        </div>
+        <p class="message" data-bind="html: messageContent" />
+    </div>
+
+        <script src="js/libs/jquery/jquery.js"></script>
+        <script src="js/libs/knockout/knockout-min.js"></script>
+        <script src="app/main.js"></script>
+    </body>
+</html>

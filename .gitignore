@@ -1,0 +1,5 @@
+grails/target
+grails/target-eclipse
+.settings
+.classpath
+.project
